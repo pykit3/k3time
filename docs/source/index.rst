@@ -3,10 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-this-package
+k3time
 ==========
-
-pykit3 is is a collection of toolkit in python3.
 
 .. toctree::
    :maxdepth: 2
@@ -15,24 +13,27 @@ pykit3 is is a collection of toolkit in python3.
 Documentation for the Code
 **************************
 
-.. automodule:: this-package
-
-
-Exceptions
-----------
-
-.. autoexception::  CalledProcessError
-.. autoexception::  ProcError
-.. autoexception::  TimeoutExpired
-
+.. automodule:: k3time
 
 Functions
 ---------
 
-.. autofunction::  command
-.. autofunction::  command_ex
-.. autofunction::  shell_script
-.. autofunction::  start_process
+.. autofunction::  parse_to_ts
+.. autofunction::  parse
+.. autofunction::  format
+.. autofunction::  format_ts
+.. autofunction::  utc_datetime_to_ts
+.. autofunction::  datetime_to_ts
+.. autofunction::  ts_to_datetime
+.. autofunction::  ts
+.. autofunction::  ms
+.. autofunction::  us
+.. autofunction::  ns
+.. autofunction::  ms_to_ts
+.. autofunction::  us_to_ts
+.. autofunction::  ns_to_ts
+.. autofunction::  to_sec
+.. autofunction::  is_timestamp
 
 Indices and tables
 ==================

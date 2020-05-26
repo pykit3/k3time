@@ -1,29 +1,34 @@
 """
-package-name is utility to create sub process.
+Time convertion utils.
 
-Execute a shell script::
-
-    import pk3proc
-
-    # execute a shell script
-
-    returncode, out, err = pk3proc.shell_script('ls / | grep bin')
-    print returncode
-    print out
-    # output:
-    # > 0
-    # > bin
-    # > sbin
-
-Run a command::
-
-    # Unlike the above snippet, following statement does not start an sh process.
-    returncode, out, err = pk3proc.command('ls', 'a*', cwd='/usr/local')
+>>> parse('2017-01-24T07:51:59.000Z', 'iso')
+datetime.datetime(2017, 1, 24, 7, 51, 59)
+>>> format_ts(1485216000, 'iso')
+'2017-01-24T00:00:00.000Z'
+>>> format_ts(1485216000, '%Y-%m-%d')
+'2017-01-24'
 
 """
 
-# from .proc import CalledProcessError
-# from .proc import ProcError
+from .tm import (
+    formats,
+    parse_to_ts,
+    parse,
+    format,
+    format_ts,
+    utc_datetime_to_ts,
+    datetime_to_ts,
+    ts_to_datetime,
+    ts,
+    ms,
+    us,
+    ns,
+    ms_to_ts,
+    us_to_ts,
+    ns_to_ts,
+    to_sec,
+    is_timestamp,
+)
 
-__version__ = "0.2.2"
-_name = "pk3proc"
+__version__ = '0.1.0'
+_name = 'k3time'
