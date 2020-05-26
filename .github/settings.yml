@@ -1,6 +1,7 @@
 _extends: gh-config
 
 repository:
-  description: no desc
+  description: Time convertion utils
+
   homepage: https://blog.openacid.com
-  topics: tag1, tag2
+  topics: time, date, timestamp
