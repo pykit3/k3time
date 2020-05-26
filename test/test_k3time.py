@@ -110,7 +110,7 @@ class TestTimeutil(unittest.TestCase):
             (k3time.ts, 10, 1, 2),
             (k3time.ms, 13, 0.001, 3),
             (k3time.us, 16, 0.000001, 300),
-            (k3time.ns, 19, 0.000000001, 80000),
+            (k3time.ns, 19, 0.000000001, 100000),
         ]
 
         for timestamp_func, length, unit_ts, tolerance_ts in cases:
