@@ -125,19 +125,7 @@ class TestTimeutil(unittest.TestCase):
 
             self.assertEqual(length, len(str(ts2)))
 
-    def test_convert_to_ts(self):
-
-        ts = k3time.ts()
-
-        ms = ts * 1000
-        us = ts * 1000000
-        ns = ts * 1000000000
-
-        self.assertEqual(ts, k3time.ms_to_ts(ms))
-        self.assertEqual(ts, k3time.us_to_ts(us))
-        self.assertEqual(ts, k3time.ns_to_ts(ns))
-
-    def test_to_ts(self):
+    def test_to_sec(self):
 
         ts = k3time.ts()
 

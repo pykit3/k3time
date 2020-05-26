@@ -23,12 +23,9 @@ from .tm import (
     ms,
     us,
     ns,
-    ms_to_ts,
-    us_to_ts,
-    ns_to_ts,
     to_sec,
     is_timestamp,
 )
 
-__version__ = '0.1.3'
+__version__ = '0.1.4'
 _name = 'k3time'

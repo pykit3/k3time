@@ -29,9 +29,6 @@ Functions
 .. autofunction::  ms
 .. autofunction::  us
 .. autofunction::  ns
-.. autofunction::  ms_to_ts
-.. autofunction::  us_to_ts
-.. autofunction::  ns_to_ts
 .. autofunction::  to_sec
 .. autofunction::  is_timestamp
 

@@ -212,50 +212,9 @@ def ns():
     return int(time.time() * (1000 ** 3))
 
 
-def ms_to_ts(ms):
-    """
-    convert timestamp from millisecond to second
-
-    Args:
-        ms(int): millisecond
-
-    Returns:
-        int: timestamp in second.
-    """
-    return ms / 1000
-
-
-def us_to_ts(us):
-    """
-    convert timestamp from microsecond to second
-
-    Args:
-        ms(int): microsecond
-
-    Returns:
-        int: timestamp in second.
-    """
-    return us / (1000 ** 2)
-
-
-def ns_to_ts(ns):
-    """
-    convert timestamp from nanosecond to second
-
-    Args:
-        ms(int): nanosecond
-
-    Returns:
-        int: timestamp in second.
-    """
-    return ns / (1000 ** 3)
-
-
 def to_sec(v):
     """
     Convert millisecond, microsecond or nanosecond to second.
-
-    ms_to_ts, us_to_ts, ns_to_ts are then deprecated.
 
     Args:
         v: timestamp in int, long, float or string.
