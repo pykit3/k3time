@@ -6,7 +6,7 @@ PyYAML==5.3.1
 sphinx==3.0.3
 
 
-tzlocal==2.0.0
+tzlocal==2.1
 pytz==2020.1
 
 
