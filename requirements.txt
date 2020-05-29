@@ -7,7 +7,7 @@ sphinx==3.0.3
 
 
 tzlocal==2.0.0
-pytz==2019.3
+pytz==2020.1
 
 
 k3ut==0.1.7
