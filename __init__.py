@@ -27,5 +27,5 @@ from .tm import (
     is_timestamp,
 )
 
-__version__ = '0.1.4'
-_name = 'k3time'
+__version__ = '0.1.5'
+__name__ = 'k3time'
