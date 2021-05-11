@@ -12,12 +12,12 @@ k3time is a component of [pykit3] project: a python3 toolkit set.
 
 Time convertion utils.
 
->>> parse('2017-01-24T07:51:59.000Z', 'iso')
-datetime.datetime(2017, 1, 24, 7, 51, 59)
->>> format_ts(1485216000, 'iso')
-'2017-01-24T00:00:00.000Z'
->>> format_ts(1485216000, '%Y-%m-%d')
-'2017-01-24'
+    >>> parse('2017-01-24T07:51:59.000Z', 'iso')
+    datetime.datetime(2017, 1, 24, 7, 51, 59)
+    >>> format_ts(1485216000, 'iso')
+    '2017-01-24T00:00:00.000Z'
+    >>> format_ts(1485216000, '%Y-%m-%d')
+    '2017-01-24'
 
 
 
