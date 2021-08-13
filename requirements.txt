@@ -1,7 +1,7 @@
 -r _building/requirements.txt
 
 
-tzlocal~=2.1
+tzlocal~=3.0
 pytz~=2021.1
 
 
