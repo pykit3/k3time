@@ -14,7 +14,7 @@ setuptools.setup(
     keywords=['time', 'date', 'timestamp'],
     python_requires='>=3.0',
 
-    install_requires=['tzlocal~=2.1', 'pytz>=2020.1,<2022.0', 'k3ut~=0.1.15'],
+    install_requires=['tzlocal>=2.1,<5.0', 'pytz>=2020.1,<2022.0', 'k3ut~=0.1.15'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
