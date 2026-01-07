@@ -27,5 +27,23 @@ from .tm import (
     is_timestamp,
 )
 
-__version__ = '0.1.5'
-__name__ = 'k3time'
+__all__ = [
+    "formats",
+    "parse_to_ts",
+    "parse",
+    "format",
+    "format_ts",
+    "utc_datetime_to_ts",
+    "datetime_to_ts",
+    "ts_to_datetime",
+    "ts",
+    "ms",
+    "us",
+    "ns",
+    "to_sec",
+    "is_timestamp",
+]
+
+from importlib.metadata import version
+
+__version__ = version("k3time")

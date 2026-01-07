@@ -4,29 +4,28 @@
 import calendar
 import datetime
 import time
-import types
 
 import pytz
 import tzlocal
 
 formats = {
-    'default':        '%a, %d %b %Y %H:%M:%S UTC',
-    'utc':            '%a, %d %b %Y %H:%M:%S UTC',
-    'iso':            '%Y-%m-%dT%H:%M:%S.000Z',
-    'archive':        '%Y%m%d-%H',
-    'compact':        '%Y%m%d-%H%M%S',
-    'daily':          '%Y-%m-%d',
-    'daily_compact':  '%Y%m%d',
-    'mysql':          '%Y-%m-%d %H:%M:%S',
-    'nginxaccesslog': "%d/%b/%Y:%H:%M:%S",
-    'nginxerrorlog':  "%Y/%m/%d %H:%M:%S",
+    "default": "%a, %d %b %Y %H:%M:%S UTC",
+    "utc": "%a, %d %b %Y %H:%M:%S UTC",
+    "iso": "%Y-%m-%dT%H:%M:%S.000Z",
+    "archive": "%Y%m%d-%H",
+    "compact": "%Y%m%d-%H%M%S",
+    "daily": "%Y-%m-%d",
+    "daily_compact": "%Y%m%d",
+    "mysql": "%Y-%m-%d %H:%M:%S",
+    "nginxaccesslog": "%d/%b/%Y:%H:%M:%S",
+    "nginxerrorlog": "%Y/%m/%d %H:%M:%S",
 }
 
 ts_length = {
-    's':  10,
-    'ms': 13,
-    'us': 16,
-    'ns': 19,
+    "s": 10,
+    "ms": 13,
+    "us": 16,
+    "ns": 19,
 }
 
 
@@ -145,7 +144,7 @@ def datetime_to_ts(dt):
     """
     epoch_dt = datetime.datetime.fromtimestamp(0, tz=pytz.utc)
 
-    if not hasattr(dt, 'tzinfo') or dt.tzinfo is None:
+    if not hasattr(dt, "tzinfo") or dt.tzinfo is None:
         local_tz = tzlocal.get_localzone()
         dt = local_tz.localize(dt)
 
@@ -199,7 +198,7 @@ def us():
     Returns:
         int: timestamp in microsecond
     """
-    return int(time.time() * (1000 ** 2))
+    return int(time.time() * (1000**2))
 
 
 def ns():
@@ -209,7 +208,7 @@ def ns():
     Returns:
         int: timestamp in nanosecond
     """
-    return int(time.time() * (1000 ** 3))
+    return int(time.time() * (1000**3))
 
 
 def to_sec(v):
@@ -230,22 +229,21 @@ def to_sec(v):
 
     v = float(str(v))
 
-    if (not isinstance(v, float) or v < 0):
-        raise ValueError('invalid time to convert to second: {v}'.format(v=v))
+    if not isinstance(v, float) or v < 0:
+        raise ValueError("invalid time to convert to second: {v}".format(v=v))
 
-    l = len(str(int(v)))
+    num_digits = len(str(int(v)))
 
-    if l == 10:
+    if num_digits == 10:
         return int(v)
-    elif l == 13:
+    elif num_digits == 13:
         return int(v / 1000)
-    elif l == 16:
+    elif num_digits == 16:
         return int(v / (1000**2))
-    elif l == 19:
+    elif num_digits == 19:
         return int(v / (1000**3))
     else:
-        raise ValueError(
-            'invalid time length, not 10, 13, 16 or 19: {v}'.format(v=v))
+        raise ValueError("invalid time length, not 10, 13, 16 or 19: {v}".format(v=v))
 
 
 def is_timestamp(ts, unit=None):
