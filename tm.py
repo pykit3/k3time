@@ -146,7 +146,11 @@ def datetime_to_ts(dt):
 
     if not hasattr(dt, "tzinfo") or dt.tzinfo is None:
         local_tz = tzlocal.get_localzone()
-        dt = local_tz.localize(dt)
+        # tzlocal.get_localzone() returns ZoneInfo in Python 3.9+ which lacks localize()
+        if hasattr(local_tz, "localize"):
+            dt = local_tz.localize(dt)
+        else:
+            dt = dt.replace(tzinfo=local_tz)
 
     delta = dt - epoch_dt
     ts = delta.total_seconds()
