@@ -170,7 +170,7 @@ def ts_to_datetime(ts, utc=True):
     """
 
     if utc:
-        return datetime.datetime.utcfromtimestamp(ts)
+        return datetime.datetime.fromtimestamp(ts, datetime.timezone.utc)
     else:
         return datetime.datetime.fromtimestamp(ts)
 
