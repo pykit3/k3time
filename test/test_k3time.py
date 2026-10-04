@@ -1,14 +1,13 @@
 #!/usr/bin/env python2.6
-# coding: utf-8
 
 import datetime
 import time
 import unittest
 
+import k3ut
 import pytz
 
 import k3time
-import k3ut
 
 dd = k3ut.dd
 
@@ -128,9 +127,9 @@ class TestTimeutil(unittest.TestCase):
         for inp in cases:
             dd(inp, ts)
 
-            self.assertEqual(ts, k3time.to_sec(inp), "convert {inp} to second".format(inp=repr(inp)))
+            self.assertEqual(ts, k3time.to_sec(inp), f"convert {inp!r} to second")
 
-            self.assertEqual(ts, k3time.to_sec(str(inp)), "convert {inp} to second".format(inp=repr(inp)))
+            self.assertEqual(ts, k3time.to_sec(str(inp)), f"convert {inp!r} to second")
 
     def test_to_ts_invalid_input(self):
         cases = (
@@ -142,7 +141,7 @@ class TestTimeutil(unittest.TestCase):
             [],
             (),
             True,
-            datetime.datetime.now(),
+            datetime.datetime.now(datetime.timezone.utc),
         )
 
         for inp in cases:
@@ -350,7 +349,8 @@ class TestTimeutil(unittest.TestCase):
     def test_datetime_to_ts(self):
         ts = time.time()
 
-        dt = datetime.datetime.fromtimestamp(ts)
+        # A naive datetime in local time is the case under test.
+        dt = datetime.datetime.fromtimestamp(ts)  # noqa: DTZ006
         r = k3time.datetime_to_ts(dt)
         self.assertAlmostEqual(ts, r, places=2)
 

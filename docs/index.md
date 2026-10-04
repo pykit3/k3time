@@ -20,15 +20,15 @@ pip install k3time
 import k3time
 
 # Parse ISO format datetime
-dt = k3time.parse('2017-01-24T07:51:59.000Z', 'iso')
+dt = k3time.parse("2017-01-24T07:51:59.000Z", "iso")
 print(dt)  # datetime.datetime(2017, 1, 24, 7, 51, 59)
 
 # Format timestamp to ISO string
-iso_str = k3time.format_ts(1485216000, 'iso')
+iso_str = k3time.format_ts(1485216000, "iso")
 print(iso_str)  # '2017-01-24T00:00:00.000Z'
 
 # Format with custom pattern
-formatted = k3time.format_ts(1485216000, '%Y-%m-%d')
+formatted = k3time.format_ts(1485216000, "%Y-%m-%d")
 print(formatted)  # '2017-01-24'
 
 # Get current timestamp in various units

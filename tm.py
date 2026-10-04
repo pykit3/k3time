@@ -1,5 +1,4 @@
 #!/usr/bin/env python2
-# coding: utf-8
 
 import calendar
 import datetime
@@ -59,7 +58,8 @@ def parse(time_str, fmt_key, timezone=None):
         datetime.
 
     """
-    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))
+    # parse() returns a naive datetime unless `timezone` is given.
+    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))  # noqa: DTZ007
     if timezone is not None:
         tz = pytz.timezone(timezone)
         dt = tz.localize(dt)
@@ -76,7 +76,8 @@ def parse_to_ts(time_str, fmt_key):
         int: timestamp.
 
     """
-    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))
+    # utc_datetime_to_ts() reads the naive fields as UTC.
+    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))  # noqa: DTZ007
     return utc_datetime_to_ts(dt)
 
 
@@ -172,7 +173,8 @@ def ts_to_datetime(ts, utc=True):
     if utc:
         return datetime.datetime.fromtimestamp(ts, datetime.timezone.utc)
     else:
-        return datetime.datetime.fromtimestamp(ts)
+        # utc=False asks for a naive datetime in local time.
+        return datetime.datetime.fromtimestamp(ts)  # noqa: DTZ006
 
 
 def ts():
@@ -234,7 +236,7 @@ def to_sec(v):
     v = float(str(v))
 
     if not isinstance(v, float) or v < 0:
-        raise ValueError("invalid time to convert to second: {v}".format(v=v))
+        raise ValueError(f"invalid time to convert to second: {v}")
 
     num_digits = len(str(int(v)))
 
@@ -247,7 +249,7 @@ def to_sec(v):
     elif num_digits == 19:
         return int(v / (1000**3))
     else:
-        raise ValueError("invalid time length, not 10, 13, 16 or 19: {v}".format(v=v))
+        raise ValueError(f"invalid time length, not 10, 13, 16 or 19: {v}")
 
 
 def is_timestamp(ts, unit=None):
