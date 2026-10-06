@@ -51,11 +51,11 @@ def parse(time_str, fmt_key, timezone=None):
 
             Thus `parse(tm, "default")` is same as `parse(tm, "%a, %d %b %Y %H:%M:%S UTC")`.
 
-        timezone: specifies a timezone to get an aware datetime object. It is a string,
+        timezone(str): specifies a timezone to get an aware datetime object. It is a string,
             such as 'Asia/Shanghai'.
 
     Returns:
-        datetime.
+        (datetime): the parsed time.
 
     """
     # parse() returns a naive datetime unless `timezone` is given.
@@ -73,7 +73,7 @@ def parse_to_ts(time_str, fmt_key):
     instance.
 
     Returns:
-        int: timestamp.
+        (int): timestamp.
 
     """
     # utc_datetime_to_ts() reads the naive fields as UTC.
@@ -92,7 +92,7 @@ def format(dt, fmt_key):
             It can be a named format alias, or format string.
 
     Returns:
-        str: time string in specified format.
+        (str): time string in specified format.
     """
     return dt.strftime(_get_format(fmt_key))
 
@@ -110,7 +110,7 @@ def format_ts(ts, fmt_key, utc=True):
         utc(bool): set to `True` to get utc time, set to `False` to get local time.
 
     Returns:
-        str: formatted time string.
+        (str): formatted time string.
     """
     dt = ts_to_datetime(ts, utc)
     return format(dt, fmt_key)
@@ -128,7 +128,7 @@ def utc_datetime_to_ts(dt):
         dt(datetime): datetime instance
 
     Returns:
-        int: timestamp in second.
+        (int): timestamp in second.
     """
     return int(calendar.timegm(dt.timetuple()))
 
@@ -141,7 +141,7 @@ def datetime_to_ts(dt):
         dt(datetime): datetime instance
 
     Returns:
-        int: timestamp in second.
+        (float): timestamp in second.
     """
     epoch_dt = datetime.datetime.fromtimestamp(0, tz=pytz.utc)
 
@@ -167,7 +167,7 @@ def ts_to_datetime(ts, utc=True):
         ts(int): timestamp in second
 
     Returns:
-        datetime: datetime instance
+        (datetime): datetime instance
     """
 
     if utc:
@@ -182,7 +182,7 @@ def ts():
     get current timestamp in second
 
     Returns:
-        int: timestamp in second
+        (int): timestamp in second
     """
     return int(time.time())
 
@@ -192,7 +192,7 @@ def ms():
     get current timestamp in millisecond
 
     Returns:
-        int: timestamp in millisecond
+        (int): timestamp in millisecond
     """
     return int(time.time() * 1000)
 
@@ -202,7 +202,7 @@ def us():
     get current timestamp in microsecond
 
     Returns:
-        int: timestamp in microsecond
+        (int): timestamp in microsecond
     """
     return int(time.time() * (1000**2))
 
@@ -212,7 +212,7 @@ def ns():
     get current timestamp in nanosecond
 
     Returns:
-        int: timestamp in nanosecond
+        (int): timestamp in nanosecond
     """
     return int(time.time() * (1000**3))
 
@@ -222,12 +222,12 @@ def to_sec(v):
     Convert millisecond, microsecond or nanosecond to second.
 
     Args:
-        v: timestamp in int, long, float or string.
+        v(int | float | str): timestamp in int, float or string.
             It can be a timestamp in second, millisecond(10e-3),
             microsecond(10e-6) or nanosecond(10e-9).
 
     Returns:
-        int: timestamp in second.
+        (int): timestamp in second.
 
     Raises:
         ValueError:  If `v` is not a valid timestamp.
@@ -269,7 +269,7 @@ def is_timestamp(ts, unit=None):
             -   `None`:  choose automatically.
 
     Returns:
-        bool
+        (bool): whether `ts` is a valid timestamp.
     """
 
     string = str(ts)
