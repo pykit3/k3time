@@ -257,10 +257,9 @@ def is_timestamp(ts, unit=None):
     It check if `ts` is a valid timestamp, in string or number.
 
     Args:
+        ts(str | int): is timestamp in string or int.
 
-        ts: is timestamp in string or int.
-
-        unit: specifies what the unit `ts` is in:
+        unit(str | None): specifies what the unit `ts` is in:
 
             -   `s`:     second
             -   `ms`:    millisecond `10^-3`
