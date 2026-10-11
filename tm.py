@@ -182,7 +182,7 @@ def ts():
     Returns:
         (int): timestamp in second
     """
-    return int(time.time())
+    return time.time_ns() // (1000**3)
 
 
 def ms():
@@ -192,7 +192,7 @@ def ms():
     Returns:
         (int): timestamp in millisecond
     """
-    return int(time.time() * 1000)
+    return time.time_ns() // (1000**2)
 
 
 def us():
@@ -202,7 +202,7 @@ def us():
     Returns:
         (int): timestamp in microsecond
     """
-    return int(time.time() * (1000**2))
+    return time.time_ns() // 1000
 
 
 def ns():
@@ -212,7 +212,7 @@ def ns():
     Returns:
         (int): timestamp in nanosecond
     """
-    return int(time.time() * (1000**3))
+    return time.time_ns()
 
 
 def to_sec(v):

@@ -1,6 +1,7 @@
 import datetime
 import time
 import unittest
+from unittest import mock
 
 import k3ut
 import pytz
@@ -104,6 +105,17 @@ class TestTimeutil(unittest.TestCase):
             self.assertTrue(ts1 < ts2 < ts1 + tolerance_ts)
 
             self.assertEqual(length, len(str(ts2)))
+
+    def test_timestamp_exact(self):
+        # A float cannot hold this instant: 1760000000.999999999 rounds up to 1760000001.0.
+        with (
+            mock.patch("time.time", return_value=1760000000.999999999),
+            mock.patch("time.time_ns", return_value=1760000000999999999),
+        ):
+            self.assertEqual(1760000000, k3time.ts())
+            self.assertEqual(1760000000999, k3time.ms())
+            self.assertEqual(1760000000999999, k3time.us())
+            self.assertEqual(1760000000999999999, k3time.ns())
 
     def test_to_sec(self):
         ts = k3time.ts()
