@@ -348,7 +348,7 @@ class TestTimeutil(unittest.TestCase):
         ts = time.time()
 
         # A naive datetime in local time is the case under test.
-        dt = datetime.datetime.fromtimestamp(ts)  # noqa: DTZ006
+        dt = datetime.datetime.fromtimestamp(ts)
         r = k3time.datetime_to_ts(dt)
         self.assertAlmostEqual(ts, r, places=2)
 

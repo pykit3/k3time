@@ -57,7 +57,7 @@ def parse(time_str, fmt_key, timezone=None):
 
     """
     # parse() returns a naive datetime unless `timezone` is given.
-    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))  # noqa: DTZ007
+    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))
     if timezone is not None:
         tz = pytz.timezone(timezone)
         dt = tz.localize(dt)
@@ -75,7 +75,7 @@ def parse_to_ts(time_str, fmt_key):
 
     """
     # utc_datetime_to_ts() reads the naive fields as UTC.
-    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))  # noqa: DTZ007
+    dt = datetime.datetime.strptime(time_str, _get_format(fmt_key))
     return utc_datetime_to_ts(dt)
 
 
@@ -172,7 +172,7 @@ def ts_to_datetime(ts, utc=True):
         return datetime.datetime.fromtimestamp(ts, datetime.timezone.utc)
     else:
         # utc=False asks for a naive datetime in local time.
-        return datetime.datetime.fromtimestamp(ts)  # noqa: DTZ006
+        return datetime.datetime.fromtimestamp(ts)
 
 
 def ts():
