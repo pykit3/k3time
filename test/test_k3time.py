@@ -1,6 +1,7 @@
 import datetime
 import time
 import unittest
+import zoneinfo
 from unittest import mock
 
 import k3ut
@@ -379,6 +380,19 @@ class TestTimeutil(unittest.TestCase):
 
             r = k3time.datetime_to_ts(dt)
             self.assertAlmostEqual(ts, r, places=2)
+
+    def test_datetime_to_ts_dst(self):
+        # New York moves from EST to EDT at 2021-03-14 02:00 and back at 2021-11-07 02:00.
+        # A naive datetime is read with the UTC offset in effect at that local time.
+        cases = (
+            (datetime.datetime(2021, 3, 14, 1, 59, 59), 1615705199),
+            (datetime.datetime(2021, 3, 14, 3, 0, 0), 1615705200),
+            (datetime.datetime(2021, 11, 7, 0, 59, 59), 1636261199),
+            (datetime.datetime(2021, 11, 7, 2, 0, 0), 1636268400),
+        )
+        with mock.patch("tzlocal.get_localzone", return_value=zoneinfo.ZoneInfo("America/New_York")):
+            for dt, expected in cases:
+                self.assertEqual(expected, k3time.datetime_to_ts(dt), dt)
 
     def test_parse_with_timezone(self):
         cases = (
