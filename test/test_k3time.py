@@ -152,6 +152,10 @@ class TestTimeutil(unittest.TestCase):
             (),
             True,
             datetime.datetime.now(datetime.timezone.utc),
+            float("inf"),
+            "inf",
+            float("nan"),
+            "nan",
         )
 
         for inp in cases:

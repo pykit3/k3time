@@ -1,5 +1,6 @@
 import calendar
 import datetime
+import math
 import time
 
 import pytz
@@ -233,7 +234,7 @@ def to_sec(v):
 
     v = float(str(v))
 
-    if not isinstance(v, float) or v < 0:
+    if not math.isfinite(v) or v < 0:
         raise ValueError(f"invalid time to convert to second: {v}")
 
     num_digits = len(str(int(v)))
