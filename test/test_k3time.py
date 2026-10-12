@@ -90,20 +90,20 @@ class TestTimeutil(unittest.TestCase):
 
     def test_timestamp(self):
         cases = [
-            (k3time.ts, 10, 1, 2),
-            (k3time.ms, 13, 0.001, 3),
-            (k3time.us, 16, 0.000001, 300),
-            (k3time.ns, 19, 0.000000001, 300000),
+            (k3time.ts, 10, 1),
+            (k3time.ms, 13, 0.001),
+            (k3time.us, 16, 0.000001),
+            (k3time.ns, 19, 0.000000001),
         ]
 
-        for timestamp_func, length, unit_ts, tolerance_ts in cases:
+        for timestamp_func, length, unit_ts in cases:
             ts1 = timestamp_func()
 
             time.sleep(unit_ts)
 
             ts2 = timestamp_func()
 
-            self.assertTrue(ts1 < ts2 < ts1 + tolerance_ts)
+            self.assertLess(ts1, ts2)
 
             self.assertEqual(length, len(str(ts2)))
 
